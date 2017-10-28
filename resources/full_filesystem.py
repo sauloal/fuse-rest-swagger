@@ -1,5 +1,15 @@
 #!/usr/bin/env python
 # source: https://www.stavros.io/posts/python-fuse-filesystem/
+# source: https://github.com/skorokithakis/python-fuse-sample
+#
+#If you want to run it as a script, just install fusepy, 
+#put the script into a file (e.g. myfuse.py) and run 
+#python myfuse.py /your/dir /mnt/point. 
+#You will see all files in /your/dir under /mnt/point 
+#and be able to manipulate them exactly as if they were 
+#in the original filesystem.
+
+
 
 from __future__ import with_statement
 
@@ -83,13 +93,13 @@ class Passthrough(Operations):
         return os.unlink(self._full_path(path))
 
     def symlink(self, name, target):
-        return os.symlink(name, self._full_path(target))
+        return os.symlink(target, self._full_path(name))
 
     def rename(self, old, new):
         return os.rename(self._full_path(old), self._full_path(new))
 
     def link(self, target, name):
-        return os.link(self._full_path(target), self._full_path(name))
+        return os.link(self._full_path(name), self._full_path(target))
 
     def utimens(self, path, times=None):
         return os.utime(self._full_path(path), times)
