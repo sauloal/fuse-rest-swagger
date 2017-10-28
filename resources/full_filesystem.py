@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # source: https://www.stavros.io/posts/python-fuse-filesystem/
 # source: https://github.com/skorokithakis/python-fuse-sample
+# Latest commit 8d1ae63  on 11 Jun 2017
 #
 #If you want to run it as a script, just install fusepy, 
 #put the script into a file (e.g. myfuse.py) and run 
